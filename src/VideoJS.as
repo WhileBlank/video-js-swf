@@ -347,6 +347,9 @@ package{
                 case "preload":
                     _app.model.preload = String(pValue);
                     break;
+                case "stretching":
+                    _app.model.stretching = Boolean(pValue);
+                    break;
                 case "src":
                     // same as when vjs_src() is called directly
                     onSrcCalled(pValue);

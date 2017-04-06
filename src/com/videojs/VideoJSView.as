@@ -94,6 +94,17 @@ package com.videojs{
 
         }
 
+        private function fullVideoObject():void{
+            var __availableWidth:int = _model.stageRect.width;
+            var __availableHeight:int = _model.stageRect.height;
+
+            _uiVideo.width = __availableWidth;
+            _uiVideo.height = __availableHeight;
+
+            _uiVideo.x = 0;
+            _uiVideo.y = 0;
+        }
+
         private function onBackgroundColorSet(e:VideoPlaybackEvent):void{
             _uiBackground.graphics.clear();
             _uiBackground.graphics.beginFill(_model.backgroundColor, 1);
@@ -107,15 +118,30 @@ package com.videojs{
             _uiBackground.graphics.beginFill(_model.backgroundColor, 1);
             _uiBackground.graphics.drawRect(0, 0, _model.stageRect.width, _model.stageRect.height);
             _uiBackground.graphics.endFill();
-            sizeVideoObject();
+            if(_model.stretching == false){
+                sizeVideoObject();
+            }
+            else {
+                fullVideoObject();
+            }
         }
 
         private function onMetaData(e:VideoPlaybackEvent):void{
-            sizeVideoObject();
+            if(_model.stretching == false){
+                sizeVideoObject();
+            }
+            else {
+                fullVideoObject();
+            }
         }
 
         private function onDimensionUpdate(e:VideoPlaybackEvent):void{
-            sizeVideoObject();
+            if(_model.stretching == false){
+                sizeVideoObject();
+            }
+            else {
+                fullVideoObject();
+            }
         }
 
     }

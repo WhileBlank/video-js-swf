@@ -30,6 +30,7 @@ package com.videojs{
 
         // accessible properties
         private var _mode:String;
+        private var _stretching:Boolean = false;
         private var _stageRect:Rectangle;
         private var _jsEventProxyName:String = "";
         private var _jsErrorEventProxyName:String = "";
@@ -79,6 +80,14 @@ package com.videojs{
                 default:
                     broadcastEventExternally(ExternalErrorEventName.UNSUPPORTED_MODE);
             }
+        }
+
+        public function get stretching():Boolean {
+            return _stretching;
+        }
+
+        public function set stretching(pStretching:Boolean):void {
+            _stretching = pStretching;
         }
 
         public function get jsEventProxyName():String{
